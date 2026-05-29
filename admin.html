@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | FF Weddingz</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="admin-section">
+    <button id="logoutBtn">Logout</button>
+ <h1><span>FF Weddingz</span> Admin Dashboard</h1>
+  <p>All Booking Requests</p>
+
+  <div id="bookingsContainer">
+    Loading bookings...
+  </div>
+</section>
+
+<script>
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+
+    localStorage.removeItem("isAdminLoggedIn");
+
+    window.location.href = "admin-login.html";
+
+}); 
+
+    if (localStorage.getItem("isAdminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
+  const bookingsContainer = document.getElementById("bookingsContainer");
+
+  if (localStorage.getItem("isAdminLoggedIn") !== "true") {
+    window.location.href = "admin-login.html";
+}
+
+  async function fetchBookings() {
+    try {
+      const response = await fetch("http://localhost:5000/api/bookings");
+      const data = await response.json();
+
+      if (data.success && data.bookings.length > 0) {
+        bookingsContainer.innerHTML = data.bookings.map((booking) => {
+          return `
+            <div class="booking-card">
+              <h3>${booking.name}</h3>
+              <p><strong>Phone:</strong> ${booking.phone}</p>
+              <p><strong>Email:</strong> ${booking.email}</p>
+              <p><strong>Service:</strong> ${booking.service}</p>
+              <p><strong>Date:</strong> ${new Date(booking.date).toLocaleDateString()}</p>
+              <p><strong>Message:</strong> ${booking.message}</p>
+
+<p>
+  <strong>Status:</strong>
+
+  <select onchange="updateStatus(${booking.id}, this.value)">
+      <option value="Pending"
+        ${booking.status === "Pending" ? "selected" : ""}>
+        Pending
+      </option>
+
+      <option value="Approved"
+        ${booking.status === "Approved" ? "selected" : ""}>
+        Approved
+      </option>
+
+      <option value="Completed"
+        ${booking.status === "Completed" ? "selected" : ""}>
+        Completed
+      </option>
+  </select>
+</p>
+
+<button class="delete-btn" onclick="deleteBooking(${booking.id})">
+  Delete
+</button>
+            </div>
+          `;
+        }).join("");
+      } else {
+        bookingsContainer.innerHTML = "<p>No bookings found.</p>";
+      }
+    } catch (error) {
+      bookingsContainer.innerHTML = "<p>Failed to load bookings.</p>";
+      console.log(error);
+    }
+  }
+  
+  fetchBookings();
+  async function deleteBooking(id) {
+
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this booking?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+
+    const response = await fetch(
+      `http://localhost:5000/api/bookings/${id}`,
+      {
+        method: "DELETE"
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      alert("Booking deleted successfully ✅");
+
+      fetchBookings();
+
+    } else {
+
+      alert("Delete failed ❌");
+
+    }
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert("Server error ❌");
+
+  }
+
+}
+async function updateStatus(id, status) {
+
+  try {
+
+    const response = await fetch(
+      `http://localhost:5000/api/bookings/${id}/status`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ status })
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      alert("Status Updated ✅");
+
+    }
+
+  } catch (error) {
+
+    console.log(error);
+
+    alert("Status Update Failed ❌");
+
+  }
+
+}
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+
+    localStorage.removeItem("isAdminLoggedIn");
+
+    window.location.href = "admin-login.html";
+
+});
+</script>
+
+</body>
+</html> 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | FF Weddingz</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<button id="logoutBtn">Logout</button>
+<body>
+
+<section class="login-section">
+
+  <video autoplay muted loop playsinline class="login-bg-video">
+    <source src="videos/login-bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="login-overlay"></div>
+
+  <div class="luxury-login-card">
+
+    <div class="login-art">
+      <img src="images/login-art.jpeg" alt="Luxury Art">
+    </div>
+
+    <div class="login-form-side">
+      <h1>FF Weddingz</h1>
+      <h2>Admin Login</h2>
+      <p>Dashboard Access</p>
+
+      <form id="adminLoginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  const adminLoginForm = document.getElementById("adminLoginForm");
+
+  adminLoginForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "admin123") {
+      localStorage.setItem("isAdminLoggedIn", "true");
+      window.location.href = "admin.html";
+    } else {
+      alert("Invalid username or password ❌");
+    }
+  });
+</script>
+
+</body>
+</html>

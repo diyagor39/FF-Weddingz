@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login / Signup | FF Weddingz</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="user-auth-page">
+
+<section class="login-section">
+
+  <video autoplay muted loop playsinline class="login-bg-video">
+    <source src="videos/login-bg.mp4" type="video/mp4">
+  </video>
+
+  <div class="login-overlay"></div>
+
+  <div class="luxury-login-card">
+
+    <div class="login-art">
+      <img src="images/login-art.jpeg" alt="FF Weddingz">
+    </div>
+
+    <div class="login-form-side">
+
+      <h1>FF Weddingz</h1>
+
+      <div class="auth-tabs">
+        <button type="button" class="active" id="loginTab">Login</button>
+        <button type="button" id="signupTab">Signup</button>
+      </div>
+
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="signupForm" style="display:none;">
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button type="submit">Create Account</button>
+
+        <div class="auth-bottom-links">
+  <span id="goToSignup">Create an account</span>
+  <span>Forgot password</span>
+</div>
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="js/auth.js"></script>
+
+</body>
+</html>

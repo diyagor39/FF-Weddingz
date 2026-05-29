@@ -1,0 +1,38 @@
+```gitignore
+# Node Modules
+node_modules/
+
+# Environment Variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Temporary Files
+tmp/
+temp/
+
+# MySQL Dumps / Backups
+*.sql
+
+# Package Lock (optional)
+# package-lock.json
+
+# Runtime files
+pids/
+*.pid
+*.seed
+*.pid.lock
+```
+.env
+node_modules folder
+ff_weddingz.sql (database export)

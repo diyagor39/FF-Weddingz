@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | FF Weddingz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <img src="images/logo.png" alt="">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="setups.html">Setups</a>
+        <a href="films.html">Films</a>
+        <a href="packages.html">Packages</a>
+        <a href="inquiry.html">Inquiry</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <a href="inquiry.html" class="nav-btn">Book Now</a>
+
+</header>
+
+<section class="booking-section">
+
+    <div class="section-title">
+        <p>Craft Your Story</p>
+        <h2>Let’s Create Something Timeless</h2>
+    </div>
+
+    <div class="booking-container">
+
+        <div class="booking-info">
+            <h3>Plan Your Perfect Shoot</h3>
+
+            <p>
+                Share your vision, preferred package, setup and event details.
+                Our team will connect with you to craft a cinematic photography experience.
+            </p>
+
+            <div class="booking-points">
+                <span>Luxury Wedding Shoots</span>
+                <span>Premium Studio Setups</span>
+                <span>Cinematic Films</span>
+                <span>Customized Packages</span>
+            </div>
+        </div>
+
+        <div class="booking-form-box">
+
+            <form id="bookingForm">
+
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+
+               <input type="email" name="email" placeholder="Email Address">
+
+                <div class="form-row">
+                    <select name="service" required>
+                        <option value="">What would you like to book?</option>
+                        <option>Wedding Shoot</option>
+                        <option>Pre Wedding Shoot</option>
+                        <option>Engagement Shoot</option>
+                         <option>post Wedding Shoot</option>
+                        <option>Maternity Shoot</option>
+                        <option>Traditional Maternity Shoot</option>
+                         <option>New Born Shoot</option>
+                        <option>Family Shoot</option>
+                        <option>Product Shoot</option>
+                        <option>Branding Shoot</option>
+                        <option>Commerical Lifestyle Shoot</option>
+                        <option>Advertising/Campaigns</option>
+                        <option>Portrait Shoot</option>
+                        <option>Solo Session</option>
+                        <option>Studio Setup</option>
+                       
+                    </select>
+
+                    <select name="package">
+                        <option value="">Select Package</option>
+                        <option>Wedding & Relationship Experience</option>
+                        <option>Maternity & Family Experience</option>
+                        <option>Commercial & Branding Experience</option>
+                        <option>Lifestyle & Artistic Experience</option>
+                        <option>Custom Package</option>
+                    </select>
+                </div>
+
+               <select name="setup">
+                    <option value="">Select Studio Setup</option>
+                    <option>Ivory Arch Setup</option>
+                    <option>Vintage Courtyard Setup</option>
+                    <option>Ember Studio Setup</option>
+                    <option>Sage Palace Setup</option>
+                    <option>Mocha Curtain Setup</option>
+                    <option>Terracotta Arches Setup</option>
+                    <option>Not Required</option>
+                </select>
+
+                <div class="form-row">
+                 <input type="date" name="date">
+                  <input type="text" name="location" placeholder="Event / Shoot Location">
+                </div>
+
+               <select name="contactMethod">
+                    <option value="">Preferred Contact Method</option>
+                    <option>WhatsApp</option>
+                    <option>Call</option>
+                    <option>Email</option>
+                </select>
+
+               <textarea name="message"placeholder="Tell us about your dream shoot, theme, mood, colors or ideas..."></textarea>
+
+                <button type="submit">Book Now</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="">
+    </div>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="setups.html">Setups</a>
+        <a href="films.html">Films</a>
+        <a href="packages.html">Packages</a>
+        <a href="inquiry.html">Inquiry</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <p class="footer-text">
+        © 2026 FF Weddingz — Crafted With Elegance & Emotion
+    </p>
+
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

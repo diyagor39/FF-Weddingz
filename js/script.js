@@ -41,3 +41,45 @@ if (bookingForm) {
     }
   });
 }
+
+// Dynamic navbar integration for authentication
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector("nav");
+  if (nav) {
+    const userLoggedIn = localStorage.getItem("userLoggedIn") === "true";
+    const userName = localStorage.getItem("userName");
+    const isAdminLoggedIn = localStorage.getItem("isAdminLoggedIn") === "true";
+
+    // If admin is logged in, show a link to the admin dashboard
+    if (isAdminLoggedIn) {
+      const adminLink = document.createElement("a");
+      adminLink.href = "admin.html";
+      adminLink.innerHTML = "🛠️ Admin";
+      adminLink.style.color = "#d6a85d"; // Highlight the admin link with premium color
+      nav.appendChild(adminLink);
+    }
+
+    // Create auth link
+    const authLink = document.createElement("a");
+    authLink.id = "navAuthLink";
+
+    if (userLoggedIn || isAdminLoggedIn) {
+      authLink.href = "#";
+      const displayName = isAdminLoggedIn ? "Admin" : (userName || "User");
+      authLink.innerHTML = `Logout (${displayName})`;
+      authLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("userLoggedIn");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("isAdminLoggedIn");
+        alert("Logged out successfully ✅");
+        window.location.reload();
+      });
+    } else {
+      authLink.href = "user-auth.html";
+      authLink.innerHTML = "Login";
+    }
+
+    nav.appendChild(authLink);
+  }
+});

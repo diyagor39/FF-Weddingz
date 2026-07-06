@@ -1,4 +1,3 @@
-```gitignore
 # Node Modules
 node_modules/
 
@@ -24,15 +23,8 @@ temp/
 # MySQL Dumps / Backups
 *.sql
 
-# Package Lock (optional)
-# package-lock.json
-
 # Runtime files
 pids/
 *.pid
 *.seed
 *.pid.lock
-```
-.env
-node_modules folder
-ff_weddingz.sql (database export)

@@ -2650,7 +2650,7 @@ letter-spacing: 1px;
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
-    color: #8a4d4f;
+    color: #ce7679;
     font-size: 14px;
 }
 
@@ -2670,13 +2670,13 @@ letter-spacing: 1px;
     border-bottom: 2px solid rgba(123, 74, 50, 0.55) !important;
     box-shadow: none !important;
 
-    color: #6b3f2d !important;
+    color: #f3f0ef !important;
     font-size: 18px !important;
     padding: 16px 8px !important;
 }
 
 .user-auth-page input::placeholder {
-    color: #8a5d45 !important;
+    color: #bd947e !important;
 }
 
 .auth-bottom-links {

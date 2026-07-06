@@ -1,43 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login | FF Weddingz</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    /* ===== FULL SCREEN BACKGROUND ===== */
+    .login-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      background: #2c1506;
+      overflow: hidden;
+    }
+
+    .login-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .login-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255, 230, 180, 0.55), transparent 30%),
+        linear-gradient(135deg, rgba(190, 110, 40, 0.78), rgba(90, 40, 10, 0.88));
+      z-index: 1;
+    }
+
+    /* ===== CARD ===== */
+    .luxury-login-card {
+      position: relative;
+      z-index: 2;
+      width: 860px;
+      min-height: 430px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      border-radius: 30px;
+      background: rgba(240, 210, 185, 0.44);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 230, 200, 0.45);
+      box-shadow: 0 30px 80px rgba(40, 15, 5, 0.55);
+      overflow: hidden;
+    }
+
+    /* ===== LEFT IMAGE ===== */
+    .login-art {
+      height: 100%;
+    }
+
+    .login-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== RIGHT FORM SIDE ===== */
+    .login-form-side {
+      padding: 50px 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-form-side h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 70px;
+      color: #c89a65;
+      line-height: 1;
+      margin-bottom: 2px;
+      text-shadow: 0 4px 16px rgba(180, 120, 50, 0.45);
+    }
+
+    .login-form-side h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #7b4a22;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .login-form-side .subtitle {
+      font-size: 13px;
+      color: #9a6040;
+      margin-bottom: 30px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== FORM FIELDS ===== */
+    .admin-login-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 13px 8px 10px 8px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid rgba(120, 70, 30, 0.45);
+      outline: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      color: #5c3010;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-bottom-color: #c4936e;
+    }
+
+    .form-group input::placeholder {
+      color: #9a6040;
+      font-size: 14px;
+    }
+
+    /* ===== SUBMIT BUTTON ===== */
+    .admin-login-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #f3d6bd, #c4936e, #805033);
+      color: #4b2a10;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(100, 50, 15, 0.35);
+      transition: all 0.3s;
+    }
+
+    .admin-login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(100, 50, 15, 0.45);
+    }
+
+    .admin-login-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ===== BOTTOM LINKS ===== */
+    .admin-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .admin-links a {
+      color: #9a6040;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .admin-links a:hover {
+      color: #c4936e;
+      text-decoration: underline;
+    }
+
+    .admin-links span {
+      color: #b07050;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .luxury-login-card {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .login-art {
+        height: 200px;
+      }
+
+      .login-form-side {
+        padding: 35px 28px;
+      }
+
+      .login-form-side h1 {
+        font-size: 52px;
+      }
+    }
+  </style>
 </head>
-<button id="logoutBtn">Logout</button>
 <body>
 
 <section class="login-section">
 
+  <!-- Background Video -->
   <video autoplay muted loop playsinline class="login-bg-video">
     <source src="videos/login-bg.mp4" type="video/mp4">
   </video>
 
+  <!-- Overlay -->
   <div class="login-overlay"></div>
 
+  <!-- Card -->
   <div class="luxury-login-card">
 
+    <!-- Left: Art Image -->
     <div class="login-art">
-      <img src="images/login-art.jpeg" alt="Luxury Art">
+      <img src="images/login-art.jpeg" alt="FF Weddingz Admin">
     </div>
 
+    <!-- Right: Admin Login Form -->
     <div class="login-form-side">
       <h1>FF Weddingz</h1>
       <h2>Admin Login</h2>
-      <p>Dashboard Access</p>
+      <p class="subtitle">Dashboard Access — Authorized Personnel Only</p>
 
-      <form id="adminLoginForm">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
+      <form id="adminLoginForm" class="admin-login-form" novalidate>
 
-        <button type="submit">Login</button>
+        <div class="form-group">
+          <input
+            type="text"
+            id="adminUsername"
+            placeholder="Admin Username"
+            required
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            id="adminPassword"
+            placeholder="Admin Password"
+            required
+            autocomplete="current-password"
+          >
+        </div>
+
+        <button type="submit" class="admin-login-btn">Login to Dashboard</button>
+
+        <div class="admin-links">
+          <a href="user-auth.html">← User Login / Signup</a>
+          <span>Admin only</span>
+        </div>
+
       </form>
     </div>
 
@@ -46,19 +286,30 @@
 </section>
 
 <script>
+  // ── If admin is already logged in, skip this page ──
+  if (localStorage.getItem("isAdminLoggedIn") === "true") {
+    window.location.href = "admin.html";
+  }
+
+  // ── Form submit handler ──
   const adminLoginForm = document.getElementById("adminLoginForm");
 
   adminLoginForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const username = document.getElementById("adminUsername").value.trim();
+    const password = document.getElementById("adminPassword").value.trim();
+
+    if (!username || !password) {
+      alert("Please enter both username and password.");
+      return;
+    }
 
     if (username === "admin" && password === "admin123") {
       localStorage.setItem("isAdminLoggedIn", "true");
       window.location.href = "admin.html";
     } else {
-      alert("Invalid username or password ❌");
+      alert("Invalid admin username or password ❌\nPlease try again.");
     }
   });
 </script>

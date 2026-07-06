@@ -5,10 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard | FF Weddingz</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    #backToHomeBtn {
+        position: fixed;
+        top: 25px;
+        right: 150px;
+        background: #8b5e45;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        z-index: 9999;
+        transition: 0.3s;
+    }
+    #backToHomeBtn:hover {
+        background: #c89a65;
+        color: white;
+    }
+  </style>
 </head>
 <body>
 
 <section class="admin-section">
+    <a href="index.html" id="backToHomeBtn">Back to Website</a>
     <button id="logoutBtn">Logout</button>
  <h1><span>FF Weddingz</span> Admin Dashboard</h1>
   <p>All Booking Requests</p>
@@ -19,22 +41,12 @@
 </section>
 
 <script>
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-
-    localStorage.removeItem("isAdminLoggedIn");
-
-    window.location.href = "admin-login.html";
-
-}); 
-
-    if (localStorage.getItem("isAdminLoggedIn") !== "true") {
-  window.location.href = "admin-login.html";
-}
-  const bookingsContainer = document.getElementById("bookingsContainer");
-
+  // Auth validation - redirect to login if not logged in
   if (localStorage.getItem("isAdminLoggedIn") !== "true") {
     window.location.href = "admin-login.html";
-}
+  }
+
+  const bookingsContainer = document.getElementById("bookingsContainer");
 
   async function fetchBookings() {
     try {
@@ -163,11 +175,8 @@ async function updateStatus(id, status) {
 }
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
-
-    localStorage.removeItem("isAdminLoggedIn");
-
-    window.location.href = "admin-login.html";
-
+  localStorage.removeItem("isAdminLoggedIn");
+  window.location.href = "admin-login.html";
 });
 </script>
 

@@ -105,7 +105,7 @@ if (signupForm) {
       return;
     }
 
-    const result = await postJson("http://localhost:5000/api/signup", userData);
+    const result = await postJson("https://ff-weddingz.onrender.com/api/signup", userData);
 
     if (result.ok && result.data?.success) {
       // Server accepted the signup
@@ -145,7 +145,7 @@ if (loginForm) {
       return;
     }
 
-    const result = await postJson("http://localhost:5000/api/login", loginData);
+    const result = await postJson("https://ff-weddingz.onrender.com/api/login", loginData);
 
     if (result.ok && result.data?.success) {
       // Successful login via server
